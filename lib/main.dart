@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/dashboard_screen.dart';
 import 'package:pokedex/estado.dart';
 import 'package:pokedex/login_screen.dart';
+import 'package:pokedex/register_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -29,10 +30,13 @@ class RouterMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     EstadoRegistrado estado = Provider.of<EstadoRegistrado>(context);
-    if (estado.estaIngresado) {
-      return const DashboardScreen();
-    } else {
+    if (estado.estaIngresado == 'login') {
       return const LoginScreen();
+    } else if (estado.estaIngresado == 'dashboard'){      
+      return const DashboardScreen();
+    }
+    else {
+      return const RegisterScreen();
     }
   }
 }

@@ -9,12 +9,24 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: RawMaterialButton(
-          child: const Text("Login"),
-          onPressed: () {
-            EstadoRegistrado estado = Provider.of(context, listen: false);
-            estado.toggleIngresado();
-          },
+        child: Column(
+          children: [
+            RawMaterialButton(
+              child: const Text("Login"),
+              onPressed: () {
+                EstadoRegistrado estado = Provider.of(context, listen: false);
+                estado.cambiaringresado('dashboard');
+              },
+            ),
+            RawMaterialButton(
+              child: const Text("Registrar"),
+              onPressed: () {
+                EstadoRegistrado estado = Provider.of(context, listen: false);
+                estado.cambiaringresado('registro');
+              },
+            ),
+          ],
+          
         ),
       ),
     );
