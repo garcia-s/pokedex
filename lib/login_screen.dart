@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/estado.dart';
-import 'package:provider/provider.dart';
+import 'package:pokedex/miboton.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -8,27 +7,42 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            RawMaterialButton(
-              child: const Text("Login"),
-              onPressed: () {
-                EstadoRegistrado estado = Provider.of(context, listen: false);
-                estado.cambiaringresado('dashboard');
-              },
-            ),
-            RawMaterialButton(
-              child: const Text("Registrar"),
-              onPressed: () {
-                EstadoRegistrado estado = Provider.of(context, listen: false);
-                estado.cambiaringresado('registro');
-              },
-            ),
-          ],
-          
+      appBar: AppBar(
+        title: const Center(
+          child: Text('Esta es una barra'),
         ),
+      ),
+      body: Column(
+        children: [
+          Container(
+            height: 300,
+            color: const Color.fromARGB(255, 170, 51, 43),
+          ),
+          Expanded(
+            child: Column(
+              children: [
+                Expanded(
+                  child: Row(
+                    children: const [
+                      MiBoton(color: Colors.red, icono: Icons.add_reaction_outlined,),
+                      MiBoton(color: Colors.green, icono: Icons.abc),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    children: const [
+                      MiBoton(color: Colors.blue, icono: Icons.abc_outlined),
+                      MiBoton(color: Colors.pink, icono: Icons.abc_rounded),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
 }
+
